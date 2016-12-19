@@ -2,8 +2,9 @@ from sympy import *
 
 
 class complexNum(object):
-    def __init__(self, complexNum):
-        self.realImag = complexNum.as_real_imag()
+    def __init__(self, cNum):
+        self.cNum = cNum
+        self.realImag = cNum.as_real_imag()
         self.u = self.realImag[0]
         self.v = self.realImag[1]
 
@@ -19,24 +20,34 @@ class complexNum(object):
         else:
             return 0
 
-
     def complexDiff(self):
+        complexNum.eachDiff(self)
+
+        # if (complexNum.checkDiff(self)):                         because the bug on checkdiff, i ignore to checkdiff
         if (1):
             return (self.uDiffx + self.vDiffx * I)
         else:
             return ("It had'nt condition survey on Cauchy-Riemann")
 
     def setSymbols(self):
-        f = Lambda((x, y), complexNum)
-        return (f(1, 2, 3, 4))
+        self.x = int(input("enter x value: "))
+        self.y = int(input("enter y value: "))
+        f = Lambda((x, y), self.cNum)
+        return (f(self.x, self.y))
 
     def getSettedSymbolValue(self):
-        self.setSymbol(complexNum)
+        complexNum.setSymbol(self)
+        # complexNum.print(self)
+
+    def __mul__(self, other):
+        return (self.u * other.u + self.u * other.v*I + self.v * other.u*I - self.v * other.v)
 
 
 x, y, c = symbols('x y c', real=True)
-a = complexNum(x ** 2 + y ** 2 + 2*I)
-print(a.complexDiff())
+a = complexNum(2 * x)
+b = complexNum(3 + 6 * I )
+
+print(a * b)
 
 # bug: Cauchy-Riemann sufficient conditions checker
-# bug: have error if we have'nt any symbol on real or imag of complex number
+
