@@ -40,14 +40,36 @@ class complexNum(object):
         # complexNum.print(self)
 
     def __mul__(self, other):
-        return (self.u * other.u + self.u * other.v*I + self.v * other.u*I - self.v * other.v)
+        return (self.u * other.u + self.u * other.v * I + self.v * other.u * I - self.v * other.v)
+
+    def __add__(self, other):
+        return (self.u + other.u + self.v * I + other.v * I)
+
+    def __sub__(self, other):
+        return (self.u - other.u + self.v * I - other.v * I)
+
+
+class normalNum(object):
+    def __init__(self, obj):
+        self.num = obj
+
+    def __mul__(self, other):
+        self.num * other.num
+
+    def __add__(self, other):
+        sef.num + other.num
+
+    def __sub__(self, other):
+        self.num - other.num
+
+    def __rdiv__(self, other):
+        self.num / other.num
 
 
 x, y, c = symbols('x y c', real=True)
 a = complexNum(2 * x)
-b = complexNum(3 + 6 * I )
+b = complexNum(3 + 6 * I)
 
-print(a * b)
+print(a + b)
 
 # bug: Cauchy-Riemann sufficient conditions checker
-
