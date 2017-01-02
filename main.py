@@ -112,8 +112,11 @@ while 1:
     set_whichcase()
     if whichcase == 1:
         curNum = sympify(input('enter the function you want to calculate differential:\n>>'), locals={'x': x, 'y': y})
-        i = sympify(input('enter the symbol value to get differential\n>>'), locals={'x': x, 'y': y})
-        pprint(diff(curNum, i, 1))
+        # i = sympify(input('enter the symbol value to get differential\n>>'), locals={'x': x, 'y': y})
+        val = (curNum, x, 1)
+        pprint(diff(sympify(val)))
+        pprint("=")
+        pprint(diff(curNum, x, 1))
         whichcase2 = bool(int(input('do you want to set symbols value?(1-yes , 2-no)\n>>')))
 
     elif whichcase == 2:
