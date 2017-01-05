@@ -6,7 +6,7 @@ import pyperclip
 
 x, y, z, t = symbols('x y z t', real=True)
 
-qtCreatorFile = "tax_calc.ui"  # Enter file here.
+qtCreatorFile = "interface.ui"
 
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
 
